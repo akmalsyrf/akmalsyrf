@@ -12,11 +12,13 @@ These are some of the technologies and tools that I use:
 <!--START_SECTION:waka-->
 
 ```txt
-From: 01 January 2024 - To: 04 February 2025
+From: 01 January 2024 - To: 05 February 2025
 
-Total Time: 0 secs
+Total Time: 35 mins
 
-No activity tracked
+Go         16 mins         ███████████▓░░░░░░░░░░░░░   46.96 %
+YAML       16 mins         ███████████▒░░░░░░░░░░░░░   45.52 %
+Markdown   2 mins          ██░░░░░░░░░░░░░░░░░░░░░░░   07.52 %
 ```
 
 <!--END_SECTION:waka-->
