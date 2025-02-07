@@ -12,13 +12,17 @@ These are some of the technologies and tools that I use:
 <!--START_SECTION:waka-->
 
 ```txt
-From: 01 January 2024 - To: 05 February 2025
+From: 01 January 2024 - To: 06 February 2025
 
-Total Time: 35 mins
+Total Time: 7 hrs 29 mins
 
-Go         16 mins         ███████████▓░░░░░░░░░░░░░   46.96 %
-YAML       16 mins         ███████████▒░░░░░░░░░░░░░   45.52 %
-Markdown   2 mins          ██░░░░░░░░░░░░░░░░░░░░░░░   07.52 %
+Go           5 hrs 43 mins   ███████████████████░░░░░░   76.35 %
+YAML         42 mins         ██▒░░░░░░░░░░░░░░░░░░░░░░   09.48 %
+SQL          21 mins         █▒░░░░░░░░░░░░░░░░░░░░░░░   04.86 %
+JSON         20 mins         █░░░░░░░░░░░░░░░░░░░░░░░░   04.54 %
+Git          8 mins          ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.85 %
+Git Config   4 mins          ▒░░░░░░░░░░░░░░░░░░░░░░░░   00.98 %
+JavaScript   3 mins          ▒░░░░░░░░░░░░░░░░░░░░░░░░   00.79 %
 ```
 
 <!--END_SECTION:waka-->
