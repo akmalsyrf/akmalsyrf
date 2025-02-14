@@ -12,17 +12,17 @@ These are some of the technologies and tools that I use:
 <!--START_SECTION:waka-->
 
 ```txt
-From: 01 January 2024 - To: 11 February 2025
+From: 01 January 2024 - To: 13 February 2025
 
-Total Time: 22 hrs 52 mins
+Total Time: 34 hrs 53 mins
 
-Go           20 hrs 8 mins   ██████████████████████░░░   88.06 %
-YAML         1 hr 11 mins    █▒░░░░░░░░░░░░░░░░░░░░░░░   05.22 %
-JSON         40 mins         ▓░░░░░░░░░░░░░░░░░░░░░░░░   02.94 %
-SQL          21 mins         ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.59 %
-Git          8 mins          ░░░░░░░░░░░░░░░░░░░░░░░░░   00.61 %
-Text         4 mins          ░░░░░░░░░░░░░░░░░░░░░░░░░   00.36 %
-Solidity     4 mins          ░░░░░░░░░░░░░░░░░░░░░░░░░   00.35 %
+Go           30 hrs 39 mins  ██████████████████████░░░   87.89 %
+YAML         1 hr 34 mins    █░░░░░░░░░░░░░░░░░░░░░░░░   04.52 %
+JSON         41 mins         ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.97 %
+SQL          30 mins         ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.47 %
+TypeScript   23 mins         ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.14 %
+Text         17 mins         ▒░░░░░░░░░░░░░░░░░░░░░░░░   00.83 %
+Terraform    10 mins         ░░░░░░░░░░░░░░░░░░░░░░░░░   00.51 %
 ```
 
 <!--END_SECTION:waka-->
