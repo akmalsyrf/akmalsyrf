@@ -6,7 +6,7 @@ I'm a software developer 👨‍💻 who is passionate about technology and love
 
 These are some of the technologies and tools that I use:
 
-![Tech Stack](https://skillicons.dev/icons?i=typescript,nodejs,javascript,express,nest,sequelize,go,rabbitmq,python,solidity,react,vue,next,nuxtjs,webpack,vite,tailwindcss,bootstrap,css,scss,html,vercel,firebase,heroku,netlify,docker,postgresql,mongodb,redis,mysql,graphql,git,github,gitlab,vscode,figma,postman,pytorch,tensorflow,bash)
+![Tech Stack]([https://skillicons.dev/icons?i=typescript,nodejs,javascript,express,nest,sequelize,go,rabbitmq,python,solidity,react,vue,next,nuxtjs,webpack,vite,tailwindcss,bootstrap,css,scss,html,vercel,firebase,heroku,netlify,docker,postgresql,mongodb,redis,mysql,graphql,git,github,gitlab,vscode,figma,postman,pytorch,tensorflow,bash](https://skillicons.dev/icons?i=typescript,nodejs,javascript,express,nest,sequelize,prisma,go,rabbitmq,kafka,python,solidity,react,vue,next,nuxtjs,java,spring,webpack,vite,jest,tailwindcss,bootstrap,css,scss,html,vercel,firebase,docker,postgresql,sqlite,mongodb,redis,mysql,supabase,graphql,git,github,gitlab,githubactions,vscode,figma,postman,pytorch,tensorflow,bash,rust,aws,tauri,electron,bun,cmake,elasticsearch,fastapi,flask,sklearn,tensorflow,terraform,kubernetes,laravel))
 
 ## ⚡ Waka Time
 <!--START_SECTION:waka-->
