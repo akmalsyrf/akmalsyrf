@@ -12,17 +12,17 @@ These are some of the technologies and tools that I use:
 <!--START_SECTION:waka-->
 
 ```txt
-From: 01 January 2024 - To: 30 December 2025
+From: 01 January 2024 - To: 31 December 2025
 
-Total Time: 958 hrs
+Total Time: 961 hrs 38 mins
 
-Go                                 618 hrs 5 mins  ████████████████░░░░░░░░░   64.52 %
-TypeScript                         88 hrs 25 mins  ██▒░░░░░░░░░░░░░░░░░░░░░░   09.23 %
-YAML                               53 hrs 25 mins  █▒░░░░░░░░░░░░░░░░░░░░░░░   05.58 %
-JSON                               31 hrs 41 mins  ▓░░░░░░░░░░░░░░░░░░░░░░░░   03.31 %
-HTML                               23 hrs 26 mins  ▓░░░░░░░░░░░░░░░░░░░░░░░░   02.45 %
-SQL                                22 hrs 19 mins  ▓░░░░░░░░░░░░░░░░░░░░░░░░   02.33 %
-Rust                               21 hrs 57 mins  ▓░░░░░░░░░░░░░░░░░░░░░░░░   02.29 %
+Go                                 620 hrs 38 mins ████████████████░░░░░░░░░   64.54 %
+TypeScript                         88 hrs 25 mins  ██▒░░░░░░░░░░░░░░░░░░░░░░   09.20 %
+YAML                               53 hrs 35 mins  █▒░░░░░░░░░░░░░░░░░░░░░░░   05.57 %
+JSON                               31 hrs 57 mins  ▓░░░░░░░░░░░░░░░░░░░░░░░░   03.32 %
+HTML                               23 hrs 26 mins  ▓░░░░░░░░░░░░░░░░░░░░░░░░   02.44 %
+SQL                                22 hrs 20 mins  ▓░░░░░░░░░░░░░░░░░░░░░░░░   02.32 %
+Rust                               21 hrs 57 mins  ▓░░░░░░░░░░░░░░░░░░░░░░░░   02.28 %
 ```
 
 <!--END_SECTION:waka-->
