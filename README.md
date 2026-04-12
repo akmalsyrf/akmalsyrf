@@ -17,7 +17,7 @@ These are some of the technologies and tools that I use:
 <!--START_SECTION:waka-->
 
 ```txt
-From: 01 January 2024 - To: 10 April 2026
+From: 01 January 2024 - To: 11 April 2026
 
 Total Time: 1,234 hrs 29 mins
 
