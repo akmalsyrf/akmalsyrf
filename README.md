@@ -17,17 +17,17 @@ These are some of the technologies and tools that I use:
 <!--START_SECTION:waka-->
 
 ```txt
-From: 01 January 2024 - To: 29 June 2026
+From: 01 January 2024 - To: 30 June 2026
 
-Total Time: 1,439 hrs 5 mins
+Total Time: 1,442 hrs 53 mins
 
-Go                                 905 hrs 20 mins       ███████████████▓░░░░░░░░░   62.91 %
-TypeScript                         117 hrs 12 mins       ██░░░░░░░░░░░░░░░░░░░░░░░   08.14 %
-Markdown                           73 hrs 16 mins        █▒░░░░░░░░░░░░░░░░░░░░░░░   05.09 %
-YAML                               70 hrs 44 mins        █▒░░░░░░░░░░░░░░░░░░░░░░░   04.92 %
-JSON                               39 hrs 23 mins        ▓░░░░░░░░░░░░░░░░░░░░░░░░   02.74 %
-SQL                                32 hrs 46 mins        ▓░░░░░░░░░░░░░░░░░░░░░░░░   02.28 %
-Bash                               27 hrs 25 mins        ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.91 %
+Go                                 908 hrs 35 mins       ███████████████▓░░░░░░░░░   62.97 %
+TypeScript                         117 hrs 19 mins       ██░░░░░░░░░░░░░░░░░░░░░░░   08.13 %
+Markdown                           73 hrs 16 mins        █▒░░░░░░░░░░░░░░░░░░░░░░░   05.08 %
+YAML                               70 hrs 57 mins        █▒░░░░░░░░░░░░░░░░░░░░░░░   04.92 %
+JSON                               39 hrs 28 mins        ▓░░░░░░░░░░░░░░░░░░░░░░░░   02.74 %
+SQL                                32 hrs 49 mins        ▓░░░░░░░░░░░░░░░░░░░░░░░░   02.27 %
+Bash                               27 hrs 26 mins        ▒░░░░░░░░░░░░░░░░░░░░░░░░   01.90 %
 ```
 
 <!--END_SECTION:waka-->
