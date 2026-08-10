@@ -1,8 +1,18 @@
 # Hi there ! <img src="https://github.com/ABSphreak/ABSphreak/blob/master/gifs/Hi.gif" width="30"> I'm Akmal  💻
 
 <p align="start">
-  <img src="https://wakatime.com/badge/user/018cc9d5-ad5f-499e-a91c-eec6ac3ebfcf.svg" alt="Total time coded since Jan 2 2024" /></a>
-  <img src="https://visitor-badge.laobi.icu/badge?page_id=akmalsyrf.akmalsyrf" onerror="this.style.display='none'" /><a href="https://wakatime.com/@018cc9d5-ad5f-499e-a91c-eec6ac3ebfcf">
+  <a href="https://wakatime.com/@018cc9d5-ad5f-499e-a91c-eec6ac3ebfcf">
+    <img src="https://wakatime.com/badge/user/018cc9d5-ad5f-499e-a91c-eec6ac3ebfcf.svg" alt="Total time coded since Jan 2 2024" />
+  </a>
+  <img src="https://visitor-badge.laobi.icu/badge?page_id=akmalsyrf.akmalsyrf" alt="Profile visitors" />
+  <!--START_SECTION:wakatime_rank-->
+  <a href="https://wakatime.com/leaders/?country_code=ID">
+    <img src="https://img.shields.io/badge/Indonesia%20Rank-%23167-black?logo=wakatime&logoColor=white" alt="WakaTime Indonesia Rank #167" />
+  </a>
+  <a href="https://wakatime.com/leaders">
+    <img src="https://img.shields.io/badge/Global%20Rank-%233140-black?logo=wakatime&logoColor=white" alt="WakaTime Global Rank #3140" />
+  </a>
+  <!--END_SECTION:wakatime_rank-->
 </p>
 
 I'm a software developer 👨‍💻 who is passionate about technology and loves to learn new things. I'm excited to learn and collaborate with others
@@ -31,5 +41,4 @@ Bash                               31 hrs 18 mins        ▒░░░░░░�
 ```
 
 <!--END_SECTION:waka-->
-
 
