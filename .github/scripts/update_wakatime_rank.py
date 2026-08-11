@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Update WakaTime daily average + Indonesia/global rank badges in README.md."""
+"""Update WakaTime badges + AI workflow section in README.md."""
 
 from __future__ import annotations
 
@@ -22,6 +22,8 @@ RANK_START = "<!--START_SECTION:wakatime_rank-->"
 RANK_END = "<!--END_SECTION:wakatime_rank-->"
 DAILY_START = "<!--START_SECTION:wakatime_daily-->"
 DAILY_END = "<!--END_SECTION:wakatime_daily-->"
+AI_START = "<!--START_SECTION:wakatime_ai-->"
+AI_END = "<!--END_SECTION:wakatime_ai-->"
 
 STATS_URL = "https://wakatime.com/api/v1/users/current/stats/last_7_days"
 PROFILE_URL = "https://wakatime.com/@018cc9d5-ad5f-499e-a91c-eec6ac3ebfcf"
@@ -70,7 +72,6 @@ def api_get(api_key: str, api_url: str) -> dict:
 
 
 def shields_badge(label: str, message: str) -> str:
-    # shields.io static badge path encoding
     def enc(text: str) -> str:
         return (
             urllib.parse.quote(text, safe="")
@@ -129,13 +130,62 @@ def fetch_rank(
     return None
 
 
-def fetch_daily_average(api_key: str) -> str | None:
-    payload = api_get(api_key, STATS_URL)
-    data = payload.get("data") or {}
-    value = data.get("human_readable_daily_average")
+def fetch_stats(api_key: str) -> dict:
+    return (api_get(api_key, STATS_URL).get("data") or {})
+
+
+def parse_daily_average(stats: dict) -> str | None:
+    value = stats.get("human_readable_daily_average")
     if not value or not str(value).strip():
         return None
     return str(value).strip()
+
+
+def parse_ai_stats(stats: dict) -> dict[str, str | None]:
+    ai_category = None
+    for item in stats.get("categories") or []:
+        if str(item.get("name", "")).strip().lower() == "ai coding":
+            ai_category = item
+            break
+
+    ai_time = None
+    ai_share = None
+    if ai_category:
+        text = ai_category.get("text")
+        if text:
+            ai_time = str(text).strip()
+        percent = ai_category.get("percent")
+        if percent is not None:
+            ai_share = f"{round(float(percent))}%"
+
+    editor = None
+    editors = stats.get("editors") or []
+    if editors:
+        top = max(editors, key=lambda e: float(e.get("total_seconds") or 0))
+        name = top.get("name")
+        if name:
+            editor = str(name).strip()
+
+    models: list[str] = []
+    for item in stats.get("ai_model_breakdown") or []:
+        name = str(item.get("name") or "").strip()
+        if name:
+            models.append(name)
+    models = models[:2]
+
+    stack = None
+    if editor and models:
+        stack = f"{editor} · {', '.join(models)}"
+    elif editor:
+        stack = editor
+    elif models:
+        stack = ", ".join(models)
+
+    return {
+        "ai_time": ai_time,
+        "ai_share": ai_share,
+        "stack": stack,
+    }
 
 
 def rank_badges_markdown(ranks: dict[str, int | None]) -> str:
@@ -164,6 +214,20 @@ def daily_badge_markdown(daily_average: str | None) -> str:
     return badge_link(PROFILE_URL, src, alt)
 
 
+def ai_badges_markdown(ai: dict[str, str | None]) -> str:
+    parts = []
+    specs = (
+        ("AI Coding", ai.get("ai_time"), "WakaTime AI coding time"),
+        ("AI Share", ai.get("ai_share"), "WakaTime AI share of coding time"),
+        ("AI Stack", ai.get("stack"), "WakaTime AI stack"),
+    )
+    for label, value, alt_prefix in specs:
+        message = value or "N/A"
+        alt = f"{alt_prefix}: {message}"
+        parts.append(badge_link(PROFILE_URL, shields_badge(label, message), alt))
+    return "\n".join(parts)
+
+
 def replace_section(content: str, start: str, end: str, inner: str) -> str:
     pattern = re.compile(re.escape(start) + r".*?" + re.escape(end), re.DOTALL)
     if not pattern.search(content):
@@ -172,13 +236,20 @@ def replace_section(content: str, start: str, end: str, inner: str) -> str:
     return pattern.sub(replacement, content, count=1)
 
 
-def update_readme(daily_average: str | None, ranks: dict[str, int | None]) -> bool:
+def update_readme(
+    daily_average: str | None,
+    ranks: dict[str, int | None],
+    ai: dict[str, str | None],
+) -> bool:
     content = README.read_text(encoding="utf-8")
     updated = replace_section(
         content, DAILY_START, DAILY_END, daily_badge_markdown(daily_average)
     )
     updated = replace_section(
         updated, RANK_START, RANK_END, rank_badges_markdown(ranks)
+    )
+    updated = replace_section(
+        updated, AI_START, AI_END, ai_badges_markdown(ai)
     )
     if updated == content:
         return False
@@ -194,11 +265,14 @@ def main() -> int:
             "WAKATIME_API_KEY is required (.env or environment / GitHub secret)"
         )
 
-    daily_average = fetch_daily_average(api_key)
-    if daily_average:
-        print(f"Daily average: {daily_average}")
-    else:
-        print("Daily average: unavailable")
+    stats = fetch_stats(api_key)
+    daily_average = parse_daily_average(stats)
+    ai = parse_ai_stats(stats)
+
+    print(f"Daily average: {daily_average or 'unavailable'}")
+    print(f"AI coding: {ai.get('ai_time') or 'unavailable'}")
+    print(f"AI share: {ai.get('ai_share') or 'unavailable'}")
+    print(f"AI stack: {ai.get('stack') or 'unavailable'}")
 
     ranks: dict[str, int | None] = {}
     for board in LEADERBOARDS:
@@ -210,7 +284,7 @@ def main() -> int:
         else:
             print(f"{name} rank: #{rank}")
 
-    changed = update_readme(daily_average, ranks)
+    changed = update_readme(daily_average, ranks, ai)
     print("README.md updated." if changed else "README.md already up to date.")
     return 0
 

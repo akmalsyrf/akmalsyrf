@@ -17,12 +17,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Update WakaTime rank badge
+      - name: Update WakaTime badges
         env:
           WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
         run: python3 .github/scripts/update_wakatime_rank.py
 
-      - name: Commit rank badge
+      - name: Commit WakaTime badges
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: update WakaTime badges"

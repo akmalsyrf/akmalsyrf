@@ -10,6 +10,9 @@
   </a>
   <!--END_SECTION:wakatime_daily-->
   <img src="https://visitor-badge.laobi.icu/badge?page_id=akmalsyrf.akmalsyrf" alt="Profile visitors" />
+</p>
+
+<p align="start">
   <!--START_SECTION:wakatime_rank-->
   <a href="https://wakatime.com/leaders/?country_code=ID">
     <img src="https://img.shields.io/badge/Indonesia%20Rank-%23167-black?logo=wakatime&logoColor=white" alt="WakaTime Indonesia Rank #167" />
@@ -46,4 +49,22 @@ Bash                               31 hrs 20 mins        ▒░░░░░░�
 ```
 
 <!--END_SECTION:waka-->
+
+## 🤖 AI Workflow
+
+AI-assisted coding · last 7 days
+
+<p align="start">
+<!--START_SECTION:wakatime_ai-->
+  <a href="https://wakatime.com/@018cc9d5-ad5f-499e-a91c-eec6ac3ebfcf">
+    <img src="https://img.shields.io/badge/AI%20Coding-19%20hrs%2012%20mins-black?logo=wakatime&logoColor=white" alt="WakaTime AI coding time: 19 hrs 12 mins" />
+  </a>
+  <a href="https://wakatime.com/@018cc9d5-ad5f-499e-a91c-eec6ac3ebfcf">
+    <img src="https://img.shields.io/badge/AI%20Share-86%25-black?logo=wakatime&logoColor=white" alt="WakaTime AI share of coding time: 86%" />
+  </a>
+  <a href="https://wakatime.com/@018cc9d5-ad5f-499e-a91c-eec6ac3ebfcf">
+    <img src="https://img.shields.io/badge/AI%20Stack-Cursor%20%C2%B7%20Opus%2C%20Composer-black?logo=wakatime&logoColor=white" alt="WakaTime AI stack: Cursor · Opus, Composer" />
+  </a>
+  <!--END_SECTION:wakatime_ai-->
+</p>
 
