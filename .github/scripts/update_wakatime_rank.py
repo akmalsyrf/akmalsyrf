@@ -8,6 +8,7 @@ import json
 import os
 import re
 import sys
+import time
 import urllib.error
 import urllib.request
 from pathlib import Path
@@ -49,7 +50,7 @@ def load_dotenv(path: Path) -> None:
         os.environ.setdefault(key, value)
 
 
-def fetch_rank(api_key: str, api_url: str) -> int | None:
+def fetch_rank_once(api_key: str, api_url: str) -> tuple[int | None, dict]:
     request = urllib.request.Request(api_url)
     auth = base64.b64encode(api_key.encode("utf-8") + b":").decode("ascii")
     request.add_header("Authorization", f"Basic {auth}")
@@ -63,7 +64,37 @@ def fetch_rank(api_key: str, api_url: str) -> int | None:
 
     current_user = payload.get("current_user") or {}
     rank = current_user.get("rank")
-    return int(rank) if rank is not None else None
+    meta = {
+        "rank": rank,
+        "user_page": current_user.get("page"),
+        "response_page": payload.get("page"),
+        "total_pages": payload.get("total_pages"),
+        "country_code": payload.get("country_code"),
+        "modified_at": payload.get("modified_at"),
+        "range": (payload.get("range") or {}).get("text"),
+    }
+    return (int(rank) if rank is not None else None, meta)
+
+
+def fetch_rank(
+    api_key: str,
+    api_url: str,
+    *,
+    retries: int = 3,
+    delay_seconds: float = 20.0,
+) -> int | None:
+    """Fetch rank with retries — country boards can briefly return null mid-refresh."""
+    last_meta: dict = {}
+    for attempt in range(1, retries + 1):
+        rank, last_meta = fetch_rank_once(api_key, api_url)
+        if rank is not None:
+            if attempt > 1:
+                print(f"  recovered on attempt {attempt}: {last_meta}")
+            return rank
+        print(f"  attempt {attempt}/{retries} returned null rank: {last_meta}")
+        if attempt < retries:
+            time.sleep(delay_seconds)
+    return None
 
 
 def badge_markdown(label: str, alt_prefix: str, page_url: str, rank: int | None) -> str:
