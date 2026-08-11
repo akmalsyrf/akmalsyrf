@@ -7,10 +7,10 @@
   <img src="https://visitor-badge.laobi.icu/badge?page_id=akmalsyrf.akmalsyrf" alt="Profile visitors" />
   <!--START_SECTION:wakatime_rank-->
   <a href="https://wakatime.com/leaders/?country_code=ID">
-    <img src="https://img.shields.io/badge/Indonesia%20Rank-%23167-black?logo=wakatime&logoColor=white" alt="WakaTime Indonesia Rank #167" />
+    <img src="https://img.shields.io/badge/Indonesia%20Rank-Unranked-black?logo=wakatime&logoColor=white" alt="WakaTime Indonesia Rank Unranked" />
   </a>
   <a href="https://wakatime.com/leaders">
-    <img src="https://img.shields.io/badge/Global%20Rank-%233140-black?logo=wakatime&logoColor=white" alt="WakaTime Global Rank #3140" />
+    <img src="https://img.shields.io/badge/Global%20Rank-%233151-black?logo=wakatime&logoColor=white" alt="WakaTime Global Rank #3151" />
   </a>
   <!--END_SECTION:wakatime_rank-->
 </p>
