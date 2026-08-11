@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Update WakaTime Indonesia + global rank shields badges in README.md."""
+"""Update WakaTime daily average + Indonesia/global rank badges in README.md."""
 
 from __future__ import annotations
 
@@ -10,26 +10,33 @@ import re
 import sys
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 README = ROOT / "README.md"
 ENV_FILE = ROOT / ".env"
-START = "<!--START_SECTION:wakatime_rank-->"
-END = "<!--END_SECTION:wakatime_rank-->"
+
+RANK_START = "<!--START_SECTION:wakatime_rank-->"
+RANK_END = "<!--END_SECTION:wakatime_rank-->"
+DAILY_START = "<!--START_SECTION:wakatime_daily-->"
+DAILY_END = "<!--END_SECTION:wakatime_daily-->"
+
+STATS_URL = "https://wakatime.com/api/v1/users/current/stats/last_7_days"
+PROFILE_URL = "https://wakatime.com/@018cc9d5-ad5f-499e-a91c-eec6ac3ebfcf"
 
 LEADERBOARDS = (
     {
         "key": "indonesia",
-        "label": "Indonesia%20Rank",
+        "label": "Indonesia Rank",
         "alt_prefix": "WakaTime Indonesia Rank",
         "api_url": "https://wakatime.com/api/v1/leaders?country_code=ID",
         "page_url": "https://wakatime.com/leaders/?country_code=ID",
     },
     {
         "key": "global",
-        "label": "Global%20Rank",
+        "label": "Global Rank",
         "alt_prefix": "WakaTime Global Rank",
         "api_url": "https://wakatime.com/api/v1/leaders",
         "page_url": "https://wakatime.com/leaders",
@@ -50,18 +57,43 @@ def load_dotenv(path: Path) -> None:
         os.environ.setdefault(key, value)
 
 
-def fetch_rank_once(api_key: str, api_url: str) -> tuple[int | None, dict]:
+def api_get(api_key: str, api_url: str) -> dict:
     request = urllib.request.Request(api_url)
     auth = base64.b64encode(api_key.encode("utf-8") + b":").decode("ascii")
     request.add_header("Authorization", f"Basic {auth}")
-
     try:
         with urllib.request.urlopen(request, timeout=30) as response:
-            payload = json.load(response)
+            return json.load(response)
     except urllib.error.HTTPError as exc:
         body = exc.read().decode("utf-8", errors="replace")
         raise SystemExit(f"WakaTime API error {exc.code}: {body}") from exc
 
+
+def shields_badge(label: str, message: str) -> str:
+    # shields.io static badge path encoding
+    def enc(text: str) -> str:
+        return (
+            urllib.parse.quote(text, safe="")
+            .replace("-", "--")
+            .replace("_", "__")
+        )
+
+    return (
+        "https://img.shields.io/badge/"
+        f"{enc(label)}-{enc(message)}-black?logo=wakatime&logoColor=white"
+    )
+
+
+def badge_link(href: str, src: str, alt: str) -> str:
+    return (
+        f'  <a href="{href}">\n'
+        f'    <img src="{src}" alt="{alt}" />\n'
+        f"  </a>"
+    )
+
+
+def fetch_rank_once(api_key: str, api_url: str) -> tuple[int | None, dict]:
+    payload = api_get(api_key, api_url)
     current_user = payload.get("current_user") or {}
     rank = current_user.get("rank")
     meta = {
@@ -97,44 +129,57 @@ def fetch_rank(
     return None
 
 
-def badge_markdown(label: str, alt_prefix: str, page_url: str, rank: int | None) -> str:
-    value = f"%23{rank}" if rank is not None else "Unranked"
-    alt = f"{alt_prefix} #{rank}" if rank is not None else f"{alt_prefix} Unranked"
-    src = (
-        "https://img.shields.io/badge/"
-        f"{label}-{value}-black?logo=wakatime&logoColor=white"
-    )
-    return (
-        f'  <a href="{page_url}">\n'
-        f'    <img src="{src}" alt="{alt}" />\n'
-        f"  </a>"
-    )
+def fetch_daily_average(api_key: str) -> str | None:
+    payload = api_get(api_key, STATS_URL)
+    data = payload.get("data") or {}
+    value = data.get("human_readable_daily_average")
+    if not value or not str(value).strip():
+        return None
+    return str(value).strip()
 
 
-def badges_markdown(ranks: dict[str, int | None]) -> str:
-    parts = [
-        badge_markdown(
-            board["label"],
-            board["alt_prefix"],
-            board["page_url"],
-            ranks[board["key"]],
+def rank_badges_markdown(ranks: dict[str, int | None]) -> str:
+    parts = []
+    for board in LEADERBOARDS:
+        rank = ranks[board["key"]]
+        message = f"#{rank}" if rank is not None else "Unranked"
+        alt = (
+            f"{board['alt_prefix']} #{rank}"
+            if rank is not None
+            else f"{board['alt_prefix']} Unranked"
         )
-        for board in LEADERBOARDS
-    ]
+        src = shields_badge(board["label"], message)
+        parts.append(badge_link(board["page_url"], src, alt))
     return "\n".join(parts)
 
 
-def update_readme(ranks: dict[str, int | None]) -> bool:
-    content = README.read_text(encoding="utf-8")
-    pattern = re.compile(
-        re.escape(START) + r".*?" + re.escape(END),
-        re.DOTALL,
+def daily_badge_markdown(daily_average: str | None) -> str:
+    message = daily_average or "N/A"
+    alt = (
+        f"WakaTime daily average {daily_average}"
+        if daily_average
+        else "WakaTime daily average unavailable"
     )
-    if not pattern.search(content):
-        raise SystemExit(f"Markers {START} / {END} not found in README.md")
+    src = shields_badge("Daily Average", message)
+    return badge_link(PROFILE_URL, src, alt)
 
-    replacement = f"{START}\n{badges_markdown(ranks)}\n  {END}"
-    updated = pattern.sub(replacement, content, count=1)
+
+def replace_section(content: str, start: str, end: str, inner: str) -> str:
+    pattern = re.compile(re.escape(start) + r".*?" + re.escape(end), re.DOTALL)
+    if not pattern.search(content):
+        raise SystemExit(f"Markers {start} / {end} not found in README.md")
+    replacement = f"{start}\n{inner}\n  {end}"
+    return pattern.sub(replacement, content, count=1)
+
+
+def update_readme(daily_average: str | None, ranks: dict[str, int | None]) -> bool:
+    content = README.read_text(encoding="utf-8")
+    updated = replace_section(
+        content, DAILY_START, DAILY_END, daily_badge_markdown(daily_average)
+    )
+    updated = replace_section(
+        updated, RANK_START, RANK_END, rank_badges_markdown(ranks)
+    )
     if updated == content:
         return False
     README.write_text(updated, encoding="utf-8")
@@ -149,6 +194,12 @@ def main() -> int:
             "WAKATIME_API_KEY is required (.env or environment / GitHub secret)"
         )
 
+    daily_average = fetch_daily_average(api_key)
+    if daily_average:
+        print(f"Daily average: {daily_average}")
+    else:
+        print("Daily average: unavailable")
+
     ranks: dict[str, int | None] = {}
     for board in LEADERBOARDS:
         ranks[board["key"]] = fetch_rank(api_key, board["api_url"])
@@ -159,7 +210,7 @@ def main() -> int:
         else:
             print(f"{name} rank: #{rank}")
 
-    changed = update_readme(ranks)
+    changed = update_readme(daily_average, ranks)
     print("README.md updated." if changed else "README.md already up to date.")
     return 0
 

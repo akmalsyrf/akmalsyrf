@@ -25,7 +25,7 @@ jobs:
       - name: Commit rank badge
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "chore: update WakaTime rank badges"
+          commit_message: "chore: update WakaTime badges"
           file_pattern: README.md
 
       - uses: athul/waka-readme@master

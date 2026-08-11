@@ -4,6 +4,11 @@
   <a href="https://wakatime.com/@018cc9d5-ad5f-499e-a91c-eec6ac3ebfcf">
     <img src="https://wakatime.com/badge/user/018cc9d5-ad5f-499e-a91c-eec6ac3ebfcf.svg" alt="Total time coded since Jan 2 2024" />
   </a>
+  <!--START_SECTION:wakatime_daily-->
+  <a href="https://wakatime.com/@018cc9d5-ad5f-499e-a91c-eec6ac3ebfcf">
+    <img src="https://img.shields.io/badge/Daily%20Average-4%20hrs%2023%20mins-black?logo=wakatime&logoColor=white" alt="WakaTime daily average 4 hrs 23 mins" />
+  </a>
+  <!--END_SECTION:wakatime_daily-->
   <img src="https://visitor-badge.laobi.icu/badge?page_id=akmalsyrf.akmalsyrf" alt="Profile visitors" />
   <!--START_SECTION:wakatime_rank-->
   <a href="https://wakatime.com/leaders/?country_code=ID">
