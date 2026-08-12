@@ -59,16 +59,37 @@ def load_dotenv(path: Path) -> None:
         os.environ.setdefault(key, value)
 
 
-def api_get(api_key: str, api_url: str) -> dict:
+def api_get(
+    api_key: str,
+    api_url: str,
+    *,
+    timeout: float = 60.0,
+    retries: int = 3,
+    delay_seconds: float = 5.0,
+) -> dict:
     request = urllib.request.Request(api_url)
     auth = base64.b64encode(api_key.encode("utf-8") + b":").decode("ascii")
     request.add_header("Authorization", f"Basic {auth}")
-    try:
-        with urllib.request.urlopen(request, timeout=30) as response:
-            return json.load(response)
-    except urllib.error.HTTPError as exc:
-        body = exc.read().decode("utf-8", errors="replace")
-        raise SystemExit(f"WakaTime API error {exc.code}: {body}") from exc
+    last_error: Exception | None = None
+
+    for attempt in range(1, retries + 1):
+        try:
+            with urllib.request.urlopen(request, timeout=timeout) as response:
+                return json.load(response)
+        except urllib.error.HTTPError as exc:
+            body = exc.read().decode("utf-8", errors="replace")
+            raise SystemExit(f"WakaTime API error {exc.code}: {body}") from exc
+        except (TimeoutError, urllib.error.URLError, OSError) as exc:
+            last_error = exc
+            print(
+                f"  API request failed ({attempt}/{retries}) {api_url}: {exc}"
+            )
+            if attempt < retries:
+                time.sleep(delay_seconds)
+
+    raise SystemExit(
+        f"WakaTime API request failed after {retries} attempts: {last_error}"
+    )
 
 
 def shields_badge(label: str, message: str) -> str:
@@ -128,6 +149,32 @@ def fetch_rank(
         if attempt < retries:
             time.sleep(delay_seconds)
     return None
+
+
+def fetch_rank_safe(api_key: str, api_url: str) -> int | None | str:
+    """Return rank, None (unranked), or 'keep' when the API is unreachable."""
+    try:
+        return fetch_rank(api_key, api_url)
+    except SystemExit as exc:
+        print(f"  soft-fail, keeping previous badge value: {exc}")
+        return "keep"
+
+
+def read_existing_rank(label: str) -> int | None:
+    """Best-effort parse of current README badge value for soft-fail keep."""
+    content = README.read_text(encoding="utf-8")
+    encoded_label = urllib.parse.quote(label, safe="")
+    pattern = re.compile(
+        rf"{re.escape(encoded_label)}-(?:%23)?(\d+|Unranked)-",
+        re.IGNORECASE,
+    )
+    match = pattern.search(content)
+    if not match:
+        return None
+    value = match.group(1)
+    if value.lower() == "unranked":
+        return None
+    return int(value)
 
 
 def fetch_stats(api_key: str) -> dict:
@@ -276,13 +323,22 @@ def main() -> int:
 
     ranks: dict[str, int | None] = {}
     for board in LEADERBOARDS:
-        ranks[board["key"]] = fetch_rank(api_key, board["api_url"])
-        rank = ranks[board["key"]]
+        result = fetch_rank_safe(api_key, board["api_url"])
         name = board["key"].capitalize()
-        if rank is None:
+        if result == "keep":
+            ranks[board["key"]] = read_existing_rank(board["label"])
+            kept = ranks[board["key"]]
+            if kept is None:
+                print(f"{name} rank: keep previous (unranked/unknown)")
+            else:
+                print(f"{name} rank: keep previous #{kept}")
+            continue
+
+        ranks[board["key"]] = result
+        if result is None:
             print(f"{name} rank: unranked")
         else:
-            print(f"{name} rank: #{rank}")
+            print(f"{name} rank: #{result}")
 
     changed = update_readme(daily_average, ranks, ai)
     print("README.md updated." if changed else "README.md already up to date.")
