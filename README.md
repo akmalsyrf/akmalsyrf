@@ -110,17 +110,3 @@ Language learning · live streak
 </p>
 <!--END_SECTION:duolingo-->
 
-<!--START_SECTION:duolingo_langs-->
-```txt
-Total XP: 776,703
-Streak: 644 days
-League: #1 Diamond
-
-Japanese    377,651 XP  ████████████▓░░░░░░░░░░░░  50.11 %
-English     367,940 XP  ███████████▓░░░░░░░░░░░░░  48.83 %
-German      4,052 XP    ░░░░░░░░░░░░░░░░░░░░░░░░░  00.54 %
-Chinese     3,156 XP    ░░░░░░░░░░░░░░░░░░░░░░░░░  00.42 %
-Arabic      785 XP      ░░░░░░░░░░░░░░░░░░░░░░░░░  00.10 %
-```
-<!--END_SECTION:duolingo_langs-->
-

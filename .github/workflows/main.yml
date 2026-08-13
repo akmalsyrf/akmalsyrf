@@ -45,6 +45,4 @@ jobs:
           DUOLINGO_USERNAME: ${{ secrets.DUOLINGO_USERNAME }}
           DUOLINGO_JWT: ${{ secrets.DUOLINGO_JWT }}
           SECTION_NAME: duolingo
-          LANGS_SECTION_NAME: duolingo_langs
           LAYOUT: two_rows
-          LANG_COUNT: 7
