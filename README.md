@@ -88,8 +88,39 @@ AI-assisted coding · last 7 days
 Language learning · live streak
 
 <!--START_SECTION:duolingo-->
+<p align="start">
+  <a href="https://www.duolingo.com/profile/akmalsyrf_">
+    <img src="https://img.shields.io/badge/Streak-644%20days-58CC02?logo=duolingo&logoColor=white" alt="Duolingo streak: 644 days" />
+  </a>
+  <a href="https://www.duolingo.com/profile/akmalsyrf_">
+    <img src="https://img.shields.io/badge/Total%20XP-776%2C703-58CC02?logo=duolingo&logoColor=white" alt="Duolingo total XP: 776,703" />
+  </a>
+  <a href="https://www.duolingo.com/profile/akmalsyrf_">
+    <img src="https://img.shields.io/badge/Weekly%20XP-17%2C220-58CC02?logo=duolingo&logoColor=white" alt="Duolingo weekly XP: 17,220" />
+  </a>
+</p>
+
+<p align="start">
+  <a href="https://www.duolingo.com/profile/akmalsyrf_">
+    <img src="https://img.shields.io/badge/League%20Rank-%231%20Diamond-58CC02?logo=duolingo&logoColor=white" alt="Duolingo league rank: #1 Diamond" />
+  </a>
+  <a href="https://www.duolingo.com/profile/akmalsyrf_">
+    <img src="https://img.shields.io/badge/Learning-Japanese-58CC02?logo=duolingo&logoColor=white" alt="Duolingo learning: Japanese" />
+  </a>
+</p>
 <!--END_SECTION:duolingo-->
 
 <!--START_SECTION:duolingo_langs-->
+```txt
+Total XP: 776,703
+Streak: 644 days
+League: #1 Diamond
+
+Japanese    377,651 XP  ████████████▓░░░░░░░░░░░░  50.11 %
+English     367,940 XP  ███████████▓░░░░░░░░░░░░░  48.83 %
+German      4,052 XP    ░░░░░░░░░░░░░░░░░░░░░░░░░  00.54 %
+Chinese     3,156 XP    ░░░░░░░░░░░░░░░░░░░░░░░░░  00.42 %
+Arabic      785 XP      ░░░░░░░░░░░░░░░░░░░░░░░░░  00.10 %
+```
 <!--END_SECTION:duolingo_langs-->
 
