@@ -87,26 +87,9 @@ AI-assisted coding · last 7 days
 
 Language learning · live streak
 
-<p align="start">
 <!--START_SECTION:duolingo-->
-  <a href="https://www.duolingo.com/profile/akmalsyrf_">
-    <img src="https://img.shields.io/badge/Streak-644%20days-58CC02?logo=duolingo&logoColor=white" alt="Duolingo streak: 644 days" />
-  </a>
-  <a href="https://www.duolingo.com/profile/akmalsyrf_">
-    <img src="https://img.shields.io/badge/Total%20XP-776%2C603-58CC02?logo=duolingo&logoColor=white" alt="Duolingo total XP: 776,603" />
-  </a>
-  <a href="https://www.duolingo.com/profile/akmalsyrf_">
-    <img src="https://img.shields.io/badge/Weekly%20XP-17%2C120-58CC02?logo=duolingo&logoColor=white" alt="Duolingo weekly XP: 17,120" />
-  </a>
-</p>
+<!--END_SECTION:duolingo-->
 
-<p align="start">
-  <a href="https://www.duolingo.com/profile/akmalsyrf_">
-    <img src="https://img.shields.io/badge/League%20Rank-%231%20Diamond-58CC02?logo=duolingo&logoColor=white" alt="Duolingo league rank: #1 Diamond" />
-  </a>
-  <a href="https://www.duolingo.com/profile/akmalsyrf_">
-    <img src="https://img.shields.io/badge/Learning-Japanese-58CC02?logo=duolingo&logoColor=white" alt="Duolingo learning: Japanese" />
-  </a>
-  <!--END_SECTION:duolingo-->
-</p>
+<!--START_SECTION:duolingo_langs-->
+<!--END_SECTION:duolingo_langs-->
 
