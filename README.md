@@ -65,30 +65,6 @@ Coding time by OS · last 7 days
   <!--END_SECTION:wakatime_os-->
 </p>
 
-## 📂 Categories
-
-Activity breakdown · last 7 days
-
-<p align="start">
-<!--START_SECTION:wakatime_category-->
-  <a href="https://wakatime.com/@018cc9d5-ad5f-499e-a91c-eec6ac3ebfcf">
-    <img src="https://img.shields.io/badge/Coding-2%20hrs%2041%20mins%20%C2%B7%2018%25-black?logo=wakatime&logoColor=white" alt="WakaTime category: Coding 2 hrs 41 mins · 18%" />
-  </a>
-  <a href="https://wakatime.com/@018cc9d5-ad5f-499e-a91c-eec6ac3ebfcf">
-    <img src="https://img.shields.io/badge/AI%20Coding-11%20hrs%2029%20mins%20%C2%B7%2077%25-black?logo=wakatime&logoColor=white" alt="WakaTime category: AI Coding 11 hrs 29 mins · 77%" />
-  </a>
-</p>
-
-<p align="start">
-  <a href="https://wakatime.com/@018cc9d5-ad5f-499e-a91c-eec6ac3ebfcf">
-    <img src="https://img.shields.io/badge/Writing%20Tests-33%20mins%20%C2%B7%204%25-black?logo=wakatime&logoColor=white" alt="WakaTime category: Writing Tests 33 mins · 4%" />
-  </a>
-  <a href="https://wakatime.com/@018cc9d5-ad5f-499e-a91c-eec6ac3ebfcf">
-    <img src="https://img.shields.io/badge/Writing%20Docs-10%20mins%20%C2%B7%201%25-black?logo=wakatime&logoColor=white" alt="WakaTime category: Writing Docs 10 mins · 1%" />
-  </a>
-  <!--END_SECTION:wakatime_category-->
-</p>
-
 ## 🤖 AI Workflow
 
 AI-assisted coding · last 7 days

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Update WakaTime badges, OS, categories, and AI sections in README.md."""
+"""Update WakaTime badges, OS, and AI sections in README.md."""
 
 from __future__ import annotations
 
@@ -26,18 +26,9 @@ AI_START = "<!--START_SECTION:wakatime_ai-->"
 AI_END = "<!--END_SECTION:wakatime_ai-->"
 OS_START = "<!--START_SECTION:wakatime_os-->"
 OS_END = "<!--END_SECTION:wakatime_os-->"
-CATEGORY_START = "<!--START_SECTION:wakatime_category-->"
-CATEGORY_END = "<!--END_SECTION:wakatime_category-->"
 
 STATS_URL = "https://wakatime.com/api/v1/users/current/stats/last_7_days"
 PROFILE_URL = "https://wakatime.com/@018cc9d5-ad5f-499e-a91c-eec6ac3ebfcf"
-
-CATEGORY_ORDER = (
-    "Coding",
-    "AI Coding",
-    "Writing Tests",
-    "Writing Docs",
-)
 
 LEADERBOARDS = (
     {
@@ -271,18 +262,6 @@ def parse_operating_systems(stats: dict) -> list[tuple[str, str]]:
     return result
 
 
-def parse_categories(stats: dict) -> list[tuple[str, str]]:
-    by_name = {
-        str(item.get("name") or "").strip().lower(): item
-        for item in (stats.get("categories") or [])
-        if isinstance(item, dict)
-    }
-    result: list[tuple[str, str]] = []
-    for name in CATEGORY_ORDER:
-        result.append((name, format_stat_message(by_name.get(name.lower()))))
-    return result
-
-
 def named_badges_markdown(
     entries: list[tuple[str, str]],
     alt_prefix: str,
@@ -362,7 +341,6 @@ def update_readme(
     ranks: dict[str, int | None],
     ai: dict[str, str | None],
     operating_systems: list[tuple[str, str]],
-    categories: list[tuple[str, str]],
 ) -> bool:
     content = README.read_text(encoding="utf-8")
     updated = replace_section(
@@ -376,12 +354,6 @@ def update_readme(
         OS_START,
         OS_END,
         named_badges_markdown(operating_systems, "WakaTime OS"),
-    )
-    updated = replace_section(
-        updated,
-        CATEGORY_START,
-        CATEGORY_END,
-        named_badges_markdown(categories, "WakaTime category", row_size=2),
     )
     updated = replace_section(
         updated, AI_START, AI_END, ai_badges_markdown(ai)
@@ -404,7 +376,6 @@ def main() -> int:
     daily_average = parse_daily_average(stats)
     ai = parse_ai_stats(stats)
     operating_systems = parse_operating_systems(stats)
-    categories = parse_categories(stats)
 
     print(f"Daily average: {daily_average or 'unavailable'}")
     print(f"AI coding: {ai.get('ai_time') or 'unavailable'}")
@@ -413,10 +384,6 @@ def main() -> int:
     print(
         "OS: "
         + (", ".join(f"{n} ({v})" for n, v in operating_systems) or "unavailable")
-    )
-    print(
-        "Categories: "
-        + (", ".join(f"{n} ({v})" for n, v in categories) or "unavailable")
     )
 
     ranks: dict[str, int | None] = {}
@@ -438,9 +405,7 @@ def main() -> int:
         else:
             print(f"{name} rank: #{result}")
 
-    changed = update_readme(
-        daily_average, ranks, ai, operating_systems, categories
-    )
+    changed = update_readme(daily_average, ranks, ai, operating_systems)
     print("README.md updated." if changed else "README.md already up to date.")
     return 0
 
