@@ -22,10 +22,16 @@ jobs:
           WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
         run: python3 .github/scripts/update_wakatime_rank.py
 
-      - name: Commit WakaTime badges
+      - name: Update Duolingo badges
+        env:
+          DUOLINGO_USERNAME: ${{ secrets.DUOLINGO_USERNAME }}
+          DUOLINGO_JWT: ${{ secrets.DUOLINGO_JWT }}
+        run: python3 .github/scripts/update_duolingo.py
+
+      - name: Commit profile badges
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "chore: update WakaTime badges"
+          commit_message: "chore: update profile badges"
           file_pattern: README.md
 
       - uses: athul/waka-readme@master

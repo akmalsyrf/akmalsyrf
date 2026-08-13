@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Update WakaTime badges + AI workflow section in README.md."""
+"""Update WakaTime badges, OS, categories, and AI sections in README.md."""
 
 from __future__ import annotations
 
@@ -24,9 +24,20 @@ DAILY_START = "<!--START_SECTION:wakatime_daily-->"
 DAILY_END = "<!--END_SECTION:wakatime_daily-->"
 AI_START = "<!--START_SECTION:wakatime_ai-->"
 AI_END = "<!--END_SECTION:wakatime_ai-->"
+OS_START = "<!--START_SECTION:wakatime_os-->"
+OS_END = "<!--END_SECTION:wakatime_os-->"
+CATEGORY_START = "<!--START_SECTION:wakatime_category-->"
+CATEGORY_END = "<!--END_SECTION:wakatime_category-->"
 
 STATS_URL = "https://wakatime.com/api/v1/users/current/stats/last_7_days"
 PROFILE_URL = "https://wakatime.com/@018cc9d5-ad5f-499e-a91c-eec6ac3ebfcf"
+
+CATEGORY_ORDER = (
+    "Coding",
+    "AI Coding",
+    "Writing Tests",
+    "Writing Docs",
+)
 
 LEADERBOARDS = (
     {
@@ -235,6 +246,69 @@ def parse_ai_stats(stats: dict) -> dict[str, str | None]:
     }
 
 
+def format_stat_message(item: dict | None) -> str:
+    if not item:
+        return "N/A"
+    text = str(item.get("text") or "").strip() or "0 mins"
+    percent = item.get("percent")
+    if percent is None:
+        return text
+    return f"{text} · {round(float(percent))}%"
+
+
+def parse_operating_systems(stats: dict) -> list[tuple[str, str]]:
+    items = sorted(
+        [i for i in (stats.get("operating_systems") or []) if isinstance(i, dict)],
+        key=lambda i: float(i.get("total_seconds") or 0),
+        reverse=True,
+    )
+    result: list[tuple[str, str]] = []
+    for item in items:
+        name = str(item.get("name") or "").strip()
+        if not name:
+            continue
+        result.append((name, format_stat_message(item)))
+    return result
+
+
+def parse_categories(stats: dict) -> list[tuple[str, str]]:
+    by_name = {
+        str(item.get("name") or "").strip().lower(): item
+        for item in (stats.get("categories") or [])
+        if isinstance(item, dict)
+    }
+    result: list[tuple[str, str]] = []
+    for name in CATEGORY_ORDER:
+        result.append((name, format_stat_message(by_name.get(name.lower()))))
+    return result
+
+
+def named_badges_markdown(
+    entries: list[tuple[str, str]],
+    alt_prefix: str,
+    *,
+    row_size: int | None = None,
+) -> str:
+    if not entries:
+        return "  <!-- no data -->"
+
+    def render(items: list[tuple[str, str]]) -> str:
+        parts = []
+        for label, message in items:
+            alt = f"{alt_prefix}: {label} {message}"
+            parts.append(badge_link(PROFILE_URL, shields_badge(label, message), alt))
+        return "\n".join(parts)
+
+    if not row_size or len(entries) <= row_size:
+        return render(entries)
+
+    rows = [
+        entries[i : i + row_size] for i in range(0, len(entries), row_size)
+    ]
+    blocks = [render(row) for row in rows]
+    return "\n</p>\n\n<p align=\"start\">\n".join(blocks)
+
+
 def rank_badges_markdown(ranks: dict[str, int | None]) -> str:
     parts = []
     for board in LEADERBOARDS:
@@ -287,6 +361,8 @@ def update_readme(
     daily_average: str | None,
     ranks: dict[str, int | None],
     ai: dict[str, str | None],
+    operating_systems: list[tuple[str, str]],
+    categories: list[tuple[str, str]],
 ) -> bool:
     content = README.read_text(encoding="utf-8")
     updated = replace_section(
@@ -294,6 +370,18 @@ def update_readme(
     )
     updated = replace_section(
         updated, RANK_START, RANK_END, rank_badges_markdown(ranks)
+    )
+    updated = replace_section(
+        updated,
+        OS_START,
+        OS_END,
+        named_badges_markdown(operating_systems, "WakaTime OS"),
+    )
+    updated = replace_section(
+        updated,
+        CATEGORY_START,
+        CATEGORY_END,
+        named_badges_markdown(categories, "WakaTime category", row_size=2),
     )
     updated = replace_section(
         updated, AI_START, AI_END, ai_badges_markdown(ai)
@@ -315,11 +403,21 @@ def main() -> int:
     stats = fetch_stats(api_key)
     daily_average = parse_daily_average(stats)
     ai = parse_ai_stats(stats)
+    operating_systems = parse_operating_systems(stats)
+    categories = parse_categories(stats)
 
     print(f"Daily average: {daily_average or 'unavailable'}")
     print(f"AI coding: {ai.get('ai_time') or 'unavailable'}")
     print(f"AI share: {ai.get('ai_share') or 'unavailable'}")
     print(f"AI stack: {ai.get('stack') or 'unavailable'}")
+    print(
+        "OS: "
+        + (", ".join(f"{n} ({v})" for n, v in operating_systems) or "unavailable")
+    )
+    print(
+        "Categories: "
+        + (", ".join(f"{n} ({v})" for n, v in categories) or "unavailable")
+    )
 
     ranks: dict[str, int | None] = {}
     for board in LEADERBOARDS:
@@ -340,7 +438,9 @@ def main() -> int:
         else:
             print(f"{name} rank: #{result}")
 
-    changed = update_readme(daily_average, ranks, ai)
+    changed = update_readme(
+        daily_average, ranks, ai, operating_systems, categories
+    )
     print("README.md updated." if changed else "README.md already up to date.")
     return 0
 
