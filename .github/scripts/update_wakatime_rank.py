@@ -139,7 +139,7 @@ def fetch_rank(
     retries: int = 3,
     delay_seconds: float = 20.0,
 ) -> int | None:
-    """Fetch rank with retries — country boards can briefly return null mid-refresh."""
+    """Fetch rank with retries — current_user can lag behind the board snapshot."""
     last_meta: dict = {}
     for attempt in range(1, retries + 1):
         rank, last_meta = fetch_rank_once(api_key, api_url)
@@ -153,13 +153,17 @@ def fetch_rank(
     return None
 
 
-def fetch_rank_safe(api_key: str, api_url: str) -> int | None | str:
-    """Return rank, None (unranked), or 'keep' when the API is unreachable."""
+def fetch_rank_safe(api_key: str, api_url: str) -> int | str:
+    """Return rank, or 'keep' when it is null or the API is unreachable."""
     try:
-        return fetch_rank(api_key, api_url)
+        rank = fetch_rank(api_key, api_url)
     except SystemExit as exc:
         print(f"  soft-fail, keeping previous badge value: {exc}")
         return "keep"
+    if rank is None:
+        print("  null rank, keeping previous badge value")
+        return "keep"
+    return rank
 
 
 def read_existing_rank(label: str) -> int | None:
@@ -391,19 +395,14 @@ def main() -> int:
         result = fetch_rank_safe(api_key, board["api_url"])
         name = board["key"].capitalize()
         if result == "keep":
-            ranks[board["key"]] = read_existing_rank(board["label"])
-            kept = ranks[board["key"]]
-            if kept is None:
-                print(f"{name} rank: keep previous (unranked/unknown)")
-            else:
-                print(f"{name} rank: keep previous #{kept}")
+            kept = read_existing_rank(board["label"])
+            ranks[board["key"]] = kept
+            suffix = f"#{kept}" if kept is not None else "(unranked/unknown)"
+            print(f"{name} rank: keep previous {suffix}")
             continue
 
         ranks[board["key"]] = result
-        if result is None:
-            print(f"{name} rank: unranked")
-        else:
-            print(f"{name} rank: #{result}")
+        print(f"{name} rank: #{result}")
 
     changed = update_readme(daily_average, ranks, ai, operating_systems)
     print("README.md updated." if changed else "README.md already up to date.")

@@ -5,8 +5,9 @@ permissions:
 
 on:
   schedule:
-    # After WakaTime public leaderboard refresh (often ~08:xx UTC)
-    - cron: '0 9 * * *'
+    # WakaTime rebuilds the leaderboard ~09:2x UTC, but fills in current_user
+    # (our own rank) hours later, so run well after that.
+    - cron: '0 15 * * *'
   workflow_dispatch:
 
 jobs:
