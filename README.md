@@ -6,7 +6,7 @@
   </a>
   <!--START_SECTION:wakatime_daily-->
   <a href="https://wakatime.com/@018cc9d5-ad5f-499e-a91c-eec6ac3ebfcf">
-    <img src="https://img.shields.io/badge/Daily%20Average-3%20hrs%2057%20mins-black?logo=wakatime&logoColor=white" alt="WakaTime daily average 3 hrs 57 mins" />
+    <img src="https://img.shields.io/badge/Daily%20Average-4%20hrs%2026%20mins-black?logo=wakatime&logoColor=white" alt="WakaTime daily average 4 hrs 26 mins" />
   </a>
   <!--END_SECTION:wakatime_daily-->
   <img src="https://visitor-badge.laobi.icu/badge?page_id=akmalsyrf.akmalsyrf" alt="Profile visitors" />
@@ -15,10 +15,10 @@
 <p align="start">
   <!--START_SECTION:wakatime_rank-->
   <a href="https://wakatime.com/leaders/?country_code=ID">
-    <img src="https://img.shields.io/badge/Indonesia%20Rank-%23223-black?logo=wakatime&logoColor=white" alt="WakaTime Indonesia Rank #223" />
+    <img src="https://img.shields.io/badge/Indonesia%20Rank-%23122-black?logo=wakatime&logoColor=white" alt="WakaTime Indonesia Rank #122" />
   </a>
   <a href="https://wakatime.com/leaders">
-    <img src="https://img.shields.io/badge/Global%20Rank-%233756-black?logo=wakatime&logoColor=white" alt="WakaTime Global Rank #3756" />
+    <img src="https://img.shields.io/badge/Global%20Rank-%232206-black?logo=wakatime&logoColor=white" alt="WakaTime Global Rank #2206" />
   </a>
   <!--END_SECTION:wakatime_rank-->
 </p>
@@ -57,10 +57,10 @@ Coding time by OS · last 7 days
 <p align="start">
 <!--START_SECTION:wakatime_os-->
   <a href="https://wakatime.com/@018cc9d5-ad5f-499e-a91c-eec6ac3ebfcf">
-    <img src="https://img.shields.io/badge/Linux-16%20hrs%206%20mins%20%C2%B7%2080%25-black?logo=wakatime&logoColor=white" alt="WakaTime OS: Linux 16 hrs 6 mins · 80%" />
+    <img src="https://img.shields.io/badge/Linux-16%20hrs%206%20mins%20%C2%B7%2060%25-black?logo=wakatime&logoColor=white" alt="WakaTime OS: Linux 16 hrs 6 mins · 60%" />
   </a>
   <a href="https://wakatime.com/@018cc9d5-ad5f-499e-a91c-eec6ac3ebfcf">
-    <img src="https://img.shields.io/badge/Mac-4%20hrs%202%20mins%20%C2%B7%2020%25-black?logo=wakatime&logoColor=white" alt="WakaTime OS: Mac 4 hrs 2 mins · 20%" />
+    <img src="https://img.shields.io/badge/Mac-10%20hrs%2054%20mins%20%C2%B7%2040%25-black?logo=wakatime&logoColor=white" alt="WakaTime OS: Mac 10 hrs 54 mins · 40%" />
   </a>
   <!--END_SECTION:wakatime_os-->
 </p>
@@ -72,10 +72,10 @@ AI-assisted coding · last 7 days
 <p align="start">
 <!--START_SECTION:wakatime_ai-->
   <a href="https://wakatime.com/@018cc9d5-ad5f-499e-a91c-eec6ac3ebfcf">
-    <img src="https://img.shields.io/badge/AI%20Coding-16%20hrs%2050%20mins-black?logo=wakatime&logoColor=white" alt="WakaTime AI coding time: 16 hrs 50 mins" />
+    <img src="https://img.shields.io/badge/AI%20Coding-23%20hrs%206%20mins-black?logo=wakatime&logoColor=white" alt="WakaTime AI coding time: 23 hrs 6 mins" />
   </a>
   <a href="https://wakatime.com/@018cc9d5-ad5f-499e-a91c-eec6ac3ebfcf">
-    <img src="https://img.shields.io/badge/AI%20Share-84%25-black?logo=wakatime&logoColor=white" alt="WakaTime AI share of coding time: 84%" />
+    <img src="https://img.shields.io/badge/AI%20Share-86%25-black?logo=wakatime&logoColor=white" alt="WakaTime AI share of coding time: 86%" />
   </a>
   <a href="https://wakatime.com/@018cc9d5-ad5f-499e-a91c-eec6ac3ebfcf">
     <img src="https://img.shields.io/badge/AI%20Stack-Cursor%20%C2%B7%20Opus%2C%20Composer-black?logo=wakatime&logoColor=white" alt="WakaTime AI stack: Cursor · Opus, Composer" />
