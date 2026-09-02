@@ -90,13 +90,13 @@ Language learning · live streak
 <!--START_SECTION:duolingo-->
 <p align="start">
   <a href="https://www.duolingo.com/profile/akmalsyrf_">
-    <img src="https://img.shields.io/badge/Streak-663%20days-58CC02?logo=duolingo&logoColor=white" alt="Duolingo streak: 663 days" />
+    <img src="https://img.shields.io/badge/Streak-664%20days-58CC02?logo=duolingo&logoColor=white" alt="Duolingo streak: 664 days" />
   </a>
   <a href="https://www.duolingo.com/profile/akmalsyrf_">
-    <img src="https://img.shields.io/badge/Total%20XP-823%2C326-58CC02?logo=duolingo&logoColor=white" alt="Duolingo total XP: 823,326" />
+    <img src="https://img.shields.io/badge/Total%20XP-826%2C935-58CC02?logo=duolingo&logoColor=white" alt="Duolingo total XP: 826,935" />
   </a>
   <a href="https://www.duolingo.com/profile/akmalsyrf_">
-    <img src="https://img.shields.io/badge/Weekly%20XP-18%2C384-58CC02?logo=duolingo&logoColor=white" alt="Duolingo weekly XP: 18,384" />
+    <img src="https://img.shields.io/badge/Weekly%20XP-19%2C988-58CC02?logo=duolingo&logoColor=white" alt="Duolingo weekly XP: 19,988" />
   </a>
 </p>
 
