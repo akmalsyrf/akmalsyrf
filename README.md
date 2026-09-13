@@ -35,13 +35,13 @@ These are some of the technologies and tools that I use:
 <!--START_SECTION:waka-->
 
 ```txt
-From: 01 January 2024 - To: 11 September 2026
+From: 01 January 2024 - To: 12 September 2026
 
-Total Time: 1,697 hrs 10 mins
+Total Time: 1,697 hrs 53 mins
 
-Go                                 1,047 hrs 2 mins      ███████████████▒░░░░░░░░░   61.69 %
-TypeScript                         143 hrs 38 mins       ██░░░░░░░░░░░░░░░░░░░░░░░   08.46 %
-Markdown                           96 hrs 27 mins        █▒░░░░░░░░░░░░░░░░░░░░░░░   05.68 %
+Go                                 1,047 hrs 2 mins      ███████████████▒░░░░░░░░░   61.67 %
+TypeScript                         144 hrs 16 mins       ██░░░░░░░░░░░░░░░░░░░░░░░   08.50 %
+Markdown                           96 hrs 32 mins        █▒░░░░░░░░░░░░░░░░░░░░░░░   05.69 %
 YAML                               81 hrs 55 mins        █▒░░░░░░░░░░░░░░░░░░░░░░░   04.83 %
 JSON                               45 hrs 42 mins        ▓░░░░░░░░░░░░░░░░░░░░░░░░   02.69 %
 SQL                                40 hrs 27 mins        ▓░░░░░░░░░░░░░░░░░░░░░░░░   02.38 %
