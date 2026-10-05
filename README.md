@@ -90,19 +90,19 @@ Language learning · live streak
 <!--START_SECTION:duolingo-->
 <p align="start">
   <a href="https://www.duolingo.com/profile/akmalsyrf_">
-    <img src="https://img.shields.io/badge/Streak-696%20days-58CC02?logo=duolingo&logoColor=white" alt="Duolingo streak: 696 days" />
+    <img src="https://img.shields.io/badge/Streak-697%20days-58CC02?logo=duolingo&logoColor=white" alt="Duolingo streak: 697 days" />
   </a>
   <a href="https://www.duolingo.com/profile/akmalsyrf_">
-    <img src="https://img.shields.io/badge/Total%20XP-904%2C029-58CC02?logo=duolingo&logoColor=white" alt="Duolingo total XP: 904,029" />
+    <img src="https://img.shields.io/badge/Total%20XP-906%2C109-58CC02?logo=duolingo&logoColor=white" alt="Duolingo total XP: 906,109" />
   </a>
   <a href="https://www.duolingo.com/profile/akmalsyrf_">
-    <img src="https://img.shields.io/badge/Weekly%20XP-16%2C096-58CC02?logo=duolingo&logoColor=white" alt="Duolingo weekly XP: 16,096" />
+    <img src="https://img.shields.io/badge/Weekly%20XP-16%2C269-58CC02?logo=duolingo&logoColor=white" alt="Duolingo weekly XP: 16,269" />
   </a>
 </p>
 
 <p align="start">
   <a href="https://www.duolingo.com/profile/akmalsyrf_">
-    <img src="https://img.shields.io/badge/League%20Rank-%2310%20Diamond-58CC02?logo=duolingo&logoColor=white" alt="Duolingo league rank: #10 Diamond" />
+    <img src="https://img.shields.io/badge/League%20Rank-%231%20Diamond-58CC02?logo=duolingo&logoColor=white" alt="Duolingo league rank: #1 Diamond" />
   </a>
   <a href="https://www.duolingo.com/profile/akmalsyrf_">
     <img src="https://img.shields.io/badge/Learning-Japanese-58CC02?logo=duolingo&logoColor=white" alt="Duolingo learning: Japanese" />
