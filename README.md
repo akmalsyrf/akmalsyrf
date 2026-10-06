@@ -18,7 +18,7 @@
     <img src="https://img.shields.io/badge/Indonesia%20Rank-%23180-black?logo=wakatime&logoColor=white" alt="WakaTime Indonesia Rank #180" />
   </a>
   <a href="https://wakatime.com/leaders">
-    <img src="https://img.shields.io/badge/Global%20Rank-%232970-black?logo=wakatime&logoColor=white" alt="WakaTime Global Rank #2970" />
+    <img src="https://img.shields.io/badge/Global%20Rank-%233091-black?logo=wakatime&logoColor=white" alt="WakaTime Global Rank #3091" />
   </a>
   <!--END_SECTION:wakatime_rank-->
 </p>
