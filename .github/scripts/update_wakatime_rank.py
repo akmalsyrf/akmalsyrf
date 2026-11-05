@@ -80,7 +80,15 @@ def api_get(
                 return json.load(response)
         except urllib.error.HTTPError as exc:
             body = exc.read().decode("utf-8", errors="replace")
-            raise SystemExit(f"WakaTime API error {exc.code}: {body}") from exc
+            message = f"WakaTime API error {exc.code}: {body}"
+            if exc.code == 403 and "oauth" in body.lower():
+                message += (
+                    "\n\nWakaTime API keys are write-only (plugins only). "
+                    "For README/stats scripts, create a personal OAuth token at "
+                    "https://wakatime.com/oauth and put it in WAKATIME_API_KEY "
+                    "(GitHub secret and local .env) — same env name, OAuth value."
+                )
+            raise SystemExit(message) from exc
         except (TimeoutError, urllib.error.URLError, OSError) as exc:
             last_error = exc
             print(

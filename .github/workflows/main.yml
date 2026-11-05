@@ -18,6 +18,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # WAKATIME_API_KEY must be a personal OAuth token from
+      # https://wakatime.com/oauth (plugin API keys are write-only since Nov 2026).
       - name: Update WakaTime badges
         env:
           WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
