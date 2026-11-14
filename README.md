@@ -15,10 +15,10 @@
 <p align="start">
   <!--START_SECTION:wakatime_rank-->
   <a href="https://wakatime.com/leaders/?country_code=ID">
-    <img src="https://img.shields.io/badge/Indonesia%20Rank-%23362-black?logo=wakatime&logoColor=white" alt="WakaTime Indonesia Rank #362" />
+    <img src="https://img.shields.io/badge/Indonesia%20Rank-%23467-black?logo=wakatime&logoColor=white" alt="WakaTime Indonesia Rank #467" />
   </a>
   <a href="https://wakatime.com/leaders">
-    <img src="https://img.shields.io/badge/Global%20Rank-%235934-black?logo=wakatime&logoColor=white" alt="WakaTime Global Rank #5934" />
+    <img src="https://img.shields.io/badge/Global%20Rank-%237665-black?logo=wakatime&logoColor=white" alt="WakaTime Global Rank #7665" />
   </a>
   <!--END_SECTION:wakatime_rank-->
 </p>
