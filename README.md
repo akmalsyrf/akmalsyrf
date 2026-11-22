@@ -6,7 +6,7 @@
   </a>
   <!--START_SECTION:wakatime_daily-->
   <a href="https://wakatime.com/@018cc9d5-ad5f-499e-a91c-eec6ac3ebfcf">
-    <img src="https://img.shields.io/badge/Daily%20Average-1%20hr%2044%20mins-black?logo=wakatime&logoColor=white" alt="WakaTime daily average 1 hr 44 mins" />
+    <img src="https://img.shields.io/badge/Daily%20Average-2%20hrs%205%20mins-black?logo=wakatime&logoColor=white" alt="WakaTime daily average 2 hrs 5 mins" />
   </a>
   <!--END_SECTION:wakatime_daily-->
   <img src="https://visitor-badge.laobi.icu/badge?page_id=akmalsyrf.akmalsyrf" alt="Profile visitors" />
@@ -15,10 +15,10 @@
 <p align="start">
   <!--START_SECTION:wakatime_rank-->
   <a href="https://wakatime.com/leaders/?country_code=ID">
-    <img src="https://img.shields.io/badge/Indonesia%20Rank-%23344-black?logo=wakatime&logoColor=white" alt="WakaTime Indonesia Rank #344" />
+    <img src="https://img.shields.io/badge/Indonesia%20Rank-%23368-black?logo=wakatime&logoColor=white" alt="WakaTime Indonesia Rank #368" />
   </a>
   <a href="https://wakatime.com/leaders">
-    <img src="https://img.shields.io/badge/Global%20Rank-%235591-black?logo=wakatime&logoColor=white" alt="WakaTime Global Rank #5591" />
+    <img src="https://img.shields.io/badge/Global%20Rank-%235926-black?logo=wakatime&logoColor=white" alt="WakaTime Global Rank #5926" />
   </a>
   <!--END_SECTION:wakatime_rank-->
 </p>
@@ -60,7 +60,7 @@ Coding time by OS · last 7 days
     <img src="https://img.shields.io/badge/Linux-8%20hrs%2055%20mins%20%C2%B7%2065%25-black?logo=wakatime&logoColor=white" alt="WakaTime OS: Linux 8 hrs 55 mins · 65%" />
   </a>
   <a href="https://wakatime.com/@018cc9d5-ad5f-499e-a91c-eec6ac3ebfcf">
-    <img src="https://img.shields.io/badge/Mac-4%20hrs%2052%20mins%20%C2%B7%2035%25-black?logo=wakatime&logoColor=white" alt="WakaTime OS: Mac 4 hrs 52 mins · 35%" />
+    <img src="https://img.shields.io/badge/Mac-4%20hrs%2051%20mins%20%C2%B7%2035%25-black?logo=wakatime&logoColor=white" alt="WakaTime OS: Mac 4 hrs 51 mins · 35%" />
   </a>
   <!--END_SECTION:wakatime_os-->
 </p>
